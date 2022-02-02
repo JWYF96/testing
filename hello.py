@@ -3,9 +3,9 @@ import time
 import redis
 
 app = Flask(__name__)
-d = {}
 
-@app.route("/")
+
+@app.route("/<x>")
 def hello_world(x):
 
     r = redis.Redis(host='localhost', port=6379, db=0)
@@ -16,8 +16,5 @@ def hello_world(x):
         result = int(x)+1
         time.sleep(5)
         r.set(x, result, ex=30)
-        return f'{result}'
+        return fresult
 
-    time.sleep(5)
-
-    return result
